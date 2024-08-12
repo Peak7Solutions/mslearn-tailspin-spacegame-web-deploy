@@ -1,7 +1,7 @@
-using Microsoft.Edge.SeleniumTools;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -31,9 +31,7 @@ namespace UITests
                 switch(browser)
                 {
                   case "Chrome":
-                    driver = new ChromeDriver(
-                        Environment.GetEnvironmentVariable("ChromeWebDriver")
-                    );
+                    driver = new ChromeDriver();
                     break;
                   case "Firefox":
                     driver = new FirefoxDriver(
@@ -41,12 +39,13 @@ namespace UITests
                     );
                     break;
                   case "Edge":
-                    driver = new EdgeDriver(
-                        Environment.GetEnvironmentVariable("EdgeWebDriver"),
-                        new EdgeOptions
-                        {
-                            UseChromium = true
-                        }
+                    var options = new EdgeOptions();
+                    driver = new EdgeDriver(options
+                        // Environment.GetEnvironmentVariable("EdgeWebDriver"),
+                        // new EdgeOptions
+                        // {
+                        //     UseChromium = true
+                        // }
                     );
                     break;
                   default:
