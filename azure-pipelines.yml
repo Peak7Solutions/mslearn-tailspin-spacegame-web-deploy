@@ -149,7 +149,7 @@ stages:
       displayName: 'Run Load tests'
     - script: |
         sudo apt-get update
-        sudo apt-get intall xsltproc
+        sudo apt-get install xsltproc
         xsltproc JMeter2JUnit.xsl Results.xml > JUnit.xml
       displayName: 'Transform JMeter output to JUnit'
     - task: PublishTestResults@2
